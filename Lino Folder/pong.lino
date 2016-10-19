@@ -1,0 +1,347 @@
+"directors"
+	unit = 32;
+	display width = 1200;
+	display height = 900;
+	program name = { LINO_PONG };
+"variables"
+	( used by the program )
+	
+	( Switch off? )
+
+	running = 1;
+
+	( used by the drawer of rectangles )
+
+	( Rectangle sizes )
+
+	main rect width = 60;
+	main rect height = 10;
+	ball rect size = 4;
+
+	( used by both )
+
+	( Store the positions of the ball and blocks )
+
+	grid counter one one = 170;
+	grid counter one two = 0;
+
+	grid counter two one = 170;
+	grid counter two two = 290;
+
+	grid counter three one = 198;
+	grid counter three two = 148;
+
+	( temp variables )
+
+	posx = 0;
+	posy = 0;
+	width = 0;
+	height = 0;
+
+	( gameplay variables )
+
+	comp minpos = 1;
+	comp maxpos = 340;
+	comp speed = 2;
+
+	ball vel i = 0;
+	ball vel j = 1;
+
+	backcolour = 000000h;
+	forecolour = 000000h;
+
+	counter = 300;
+	countertwo = 400;
+
+"workspace"
+	grid = 400 multiplied 300;
+	biggrid = 1200 multiplied 900;
+	
+"programme"
+	"start"
+		E = 1000;
+		[Display Origin] = biggrid;
+		-> main;
+
+	"drawer of rectangles"
+		A = [posy];
+		A * 400;
+		A + [posx];
+		A + grid;
+		B = A;
+		B + [width];
+		C = [posy];
+		C + [height];
+		C * 400;
+		D = [width];
+		D + [posx];
+		E = 400;
+		E - D;
+		D = E;
+		E = 1000;
+		C - D;
+		C + grid;
+		D = 0;
+		=> row;
+		leave;
+
+	"row"
+		[forecolour] + 1;
+		=> pixel;
+		A + 400;
+		B = A;
+		A - [width];
+		? A < C -> row;
+		leave;
+
+	"pixel"
+		[A] = [forecolour];
+		A + 1;
+		? A < B -> pixel;
+		leave;
+	
+	"clear"
+		A = grid;
+		B = 400 multiplied 300;
+		=> goclear;
+		leave;
+	"goclear"
+		[A] = [backcolour];
+		A + 1;
+		[backcolour] + 1;
+		B ^ goclear;
+		leave;
+		
+	"draw objects"
+		=> clear;
+		[width] = [main rect width];
+		[height] = [main rect height];
+		[posx] = [grid counter one one];
+		[posy] = [grid counter one two];
+		=> drawer of rectangles;
+		[width] = [main rect width];
+		[height] = [main rect height];
+		[posx] = [grid counter two one];
+		[posy] = [grid counter two two];
+		=> drawer of rectangles;
+		[width] = [ball rect size];
+		[height] = [ball rect size];
+		[posx] = [grid counter three one];
+		[posy] = [grid counter three two];
+		=> drawer of rectangles;
+
+		leave;
+
+	"enemy"
+		=> move enemy;
+		leave;
+
+	"move enemy"
+		A = [gridcounter one one];
+		B = [comp maxpos];
+		C = [comp minpos];
+		D = [comp speed];
+
+		( ? D = 1 -> enemyright;
+		? D = 2 -> enemyleft; )
+		
+		A + [ball vel i];
+
+		"check enemy position"
+
+		? A >= B -> turnroundenemy;
+		? A <= C -> turnroundenemy;
+
+		"set enemy pos"
+	
+		[gridcounter one one] = A;
+		[comp speed] = D;
+
+		leave;
+
+	"enemyright"
+		A - 4;
+		-> check enemy position;
+	"enemyleft"
+		A + 4;
+		-> check enemy position;
+	
+	"turnroundenemy"
+		? D = 1 -> enemyturnright;
+		? D = 2 -> enemyturnleft;
+		"enemyturnright"
+			D = 2;
+			A = C;
+			-> set enemy pos;
+		"enemyturnleft"
+			D = 1;
+			A = B;
+			-> set enemy pos;
+		
+	"ball"
+		[grid counter three one] + [ball vel i];
+		[grid counter three two] + [ball vel j];
+
+		? [grid counter three one] < 0 -> bounce right;
+		? [grid counter three one] > 396 -> bounce left;
+		? [grid counter three two] < 0 -> player scores;
+		? [grid counter three two > 296 -> comp scores;
+		leave;
+
+		"bounce right"
+			A = [ball vel i];
+			A*2;
+			[ball vel i] - A;
+			[grid counter three one] = 0;
+			leave;
+		"bounce left"
+			A = [ball vel i];
+			A*2;
+			[ball vel i] - A;
+			[grid counter three one] = 396;
+			leave;
+		"player scores"
+			-> bounce down;
+			"comp loses"
+			[grid counter one one] = 170;
+			[grid counter one two] = 0;
+			[grid counter two one] = 170;
+			[grid counter two two] = 290;
+			[grid counter three one] = 198;
+			[grid counter three two ] = 148;
+			[ball vel i] = 0;
+			leave;
+		"comp scores"
+			-> bounce up;
+			"player loses"
+			[grid counter two one] = 170;
+			[grid counter two two] = 290;
+			[grid counter one one] = 170;
+			[grid counter one two] = 0;
+			[grid counter three one] = 198;
+			[grid counter three two ] = 148;
+			[ball vel i] = 0;
+			leave;
+		"bounce up"
+			A = [grid counter two one];
+			B = [grid counter three one];
+			B + 2;
+			C = A;
+			C + 60;
+			? B < A -> player loses;
+			? B > C -> player loses;
+			A = [ball vel j];
+			A * 2;
+			[ball vel j] - A;
+			[grid counter three two] = 290;
+			[ball vel i] + 1;
+			leave;
+			
+		"bounce down"
+			A = [grid counter one one];
+			B = [grid counter three one];
+			B + 2;
+			C = A;
+			C + 60;
+			? B < A -> player loses;
+			? B > C -> player loses;
+			A = [ball vel j];
+			A * 2;
+			[ball vel j] - A;
+			[grid counter three two] = 10;
+			[ball vel i] + 1;
+			leave;
+	"Input"
+		[ConsoleCommand] = GETCONSOLEINPUT;
+		A = [ConsoleInput];
+		? A = 1Bh -> endprogram;
+		? A = 61h -> move player left;
+		? A = 64h -> move player right;
+		leave;
+
+		"move player left"
+			[grid counter two one] - 2;
+			leave;
+
+		"move player right"
+			[grid counter two one] + 2;
+			leave;
+
+	"player"
+		? [grid counter two one] < 0 -> stop player at min;
+		? [grid counter two one] > 340 -> stop player at max;
+		leave;
+		
+		"stop player at min"
+			[grid counter two one] = 0;
+			leave;
+		"stop player at max"
+			[grid counter two one] = 340;
+			leave;
+
+	"endprogram"
+		[running] = 0;
+		leave;
+
+	"global"
+		leave;
+
+	"mechanics"
+		=> enemy;
+		=> player;
+		=> ball;
+		=> Input;
+		=> global;
+		leave;
+
+	"transform"
+	A = grid;
+	B = biggrid;
+	E = [counter];
+	=> fillsquare;
+	leave;
+
+	"fillsquare"
+	D = 0;
+	D +[countertwo];
+	=>fillrow;
+	B + 2400;
+	E ^ fillsquare;
+	leave;
+
+	"fillrow"
+	C = B;
+	[C] = [A];
+	C + 1;
+	[C] = [A];
+	C + 1;
+	[C] = [A];
+	C + 1198;
+	[C] = [A];
+	C + 1;
+	[C] = [A];
+	C + 1;
+	[C] = [A];
+	C + 1198;
+	[C] = [A];
+	C + 1;
+	[C] = [A];
+	C + 1;
+	[C] = [A];
+	B + 3;
+	A + 1;
+	D ^ fillrow;
+	leave;
+
+	"main"
+		( Do stuff )
+		=> mechanics; ( Gameplay )
+		=> draw objects; ( Draw everything )
+		=> transform; ( Transform screen to display) 
+		( Show stuff )
+		[Display Command] = RETRACE;
+		( Wait )
+		[Process Command] = SLEEP; [Sleep Timeout] = 10; isocall;
+		? [running] = 1 -> main;
+
+	end;

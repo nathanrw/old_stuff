@@ -1,0 +1,25 @@
+ "directors" 
+
+  unit = 32; 
+ 
+ "workspace" 
+    primary display = 300 mtp 300; 
+ 
+ "programme" 
+    [display width] = 300; 
+    [display height] = 300; 
+    [display origin] = primary display; 
+ 
+    a = 100; (row) 
+    a * 300; (row * width) 
+    a + 150; (row * width + column) 
+    [a plus primary display] = FFFFFFh; (white color) 
+   
+  "show the display" 
+    [display command] = retrace; 
+  => [isokernel]; 
+ 
+    [console command] = get console input; (*) 
+  => [isokernel];       (*) 
+    ? failed -> show the display;          (*) 
+  end;

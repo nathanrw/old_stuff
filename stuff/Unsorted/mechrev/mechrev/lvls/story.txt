@@ -1,0 +1,474 @@
+#IntroStart
+$Narrator
+    In the land of Hermanaia, all was not peaceful.  A power-hungry
+group known as Macroworks was pillaging and attacking the peaceful
+people of Hermanaia.
+They used their amassed wealth to constructed giant mechs known as 
+Deathbots to raid the towns and overpower the villagers.  For a long
+time, no one was brave enough to stand against the mechs.
+But that was soon to change.
+$Narrator
+    In a small western village called Grandale, there lived a man named Brian.
+He had spent his life studying to be an engineer.  His mission: build his own 
+Deathbots to overpower Macroworks and get revenge for lost loved ones.
+He secretly gathered some other villagers that were willing to pilot the 
+mechs.  Using their combined intelligence they were able to build a small 
+army.  They formed a group known as the mech revolution.
+Their only hope of overthrowing Macroworks and their army of Deathbots
+was to fight their way to the main factory and destroy it.
+#IntroEnd
+#Tutorial level Begin
+#GrampsIntro
+$Gramps
+"Well, Brian you've managed to put together a ragtag band of misfits.
+And you expect to defeat the Macroworks without any training what so ever.
+Sheesh, kids these days."
+$mainhero
+"Who you calling a kid, Old man?
+I'm old enough to take care of myself, thank you very much."
+$Gramps
+"Sure you are. But you still don't know how to fight at all."
+$mainhero
+"Fine, then I guess you'd better educate me, Gramps."
+$Gramps
+"Sheesh, you don't have to be so rude. Anyway lets get to work.
+See that mech over there. Go ahead and select it by clicking the
+left mouse button."
+$mainhero
+"What in the world is a mouse button Gramps?"
+$Gramps
+"Umm... Don't worry about that sonny boy."
+$mainhero
+"Okay. Be that way."
+#GrampsIntroEnd
+#GrampsMenuS
+$Gramps
+"Good, now notice the menu that popped up."
+$Gramps
+"Select move and left click on where you want to move to.
+Take note that on grass, hard ground and metal floor
+mechs can move three spaces in one turn."
+#GrampsMenuE
+#GrampsStay
+$Gramps
+"If you are sure you made a good move, select stay.
+If you made an error, select cancel.
+In this case, just click stay."
+$mainhero
+"Yeah, I never make mistakes."
+$Gramps
+"Well don't come crying to me when you move in range
+of the enemy with one hit left and get blown to bits."
+#GrampsStayE
+#GrampsEndTurnS
+$Gramps
+"In order for the game to progress, you need to signify that
+you are ready by ending your turn.  Click on an empty space,
+and then click on End Turn to do so."
+#GrampsEndTurnE
+#GrampsMoveAgainS
+$Gramps
+"Select move again and move through those crates."
+#GrampsMoveAgainE
+#Tut1EndingS
+$Gramps
+"Aha, so you didn't move as fast through the crates as you did on the floor. 
+Thats because crates and forests take an extra space to move through.
+You can check how much various terrain slows you down by highlighting it."
+"Also be aware that some terrain like mountains and towns can give you
+attack and defense bonuses, although you'll have to figure out how
+much of an effect it can have through experience."
+$mainhero
+"Yeah, yeah, I know how to move the mechs, after all I did build them."
+$Gramps
+"Just because you know how to build something doesn't mean you know
+how to use it properly!  Do you want to die so soon by running off
+without checking if things work properly?"
+$mainhero
+"If I have to listen to you tell me all this boring stuff much longer,
+death would be a sweet victory."
+$Gramps
+"Ehhhhhhhhhhh???????????  Does your attitude know no bounds?
+If the fate of the people of grand Hermanaia didn't hang in the
+balance, I would end your life."
+$mainhero
+"You could try."
+$Gramps
+"<smirking> I have learned a thing or two in my years as a member
+of the Town Watch.  At any rate, we are losing time.  We must progress
+so you can get out and start taking names."
+$mainhero
+"For once, we agree on something."
+#Tut1EndingE
+#tut2s
+$Gramps
+"Next we have another unit. These are footmen.  They have been
+training for months under my command."
+$mainhero
+"Pfft.  I don't Expect much then."
+$Gramps
+"They are slower than mechs, and not as powerful, so be careful.
+Proper use can turn the tide in a battle, as they have strength
+in numbers."
+$Gramps
+"The amount of footmen in the unit is equal
+to the amount of health the unit has.
+These two units have been beaten down from all that training."
+"They wouldn't stand a chance if we sent them into battle like that.
+But together they might be able to do some damage.
+When they are next to each other you can combine their forces"
+"Do so now."
+#tut2e
+#tut2afterjoins
+$Gramps
+"Good job. I must inform you that their attacks are stronger together 
+than by themselves.  It is important to use them while their attacks 
+are strong, and try and keep them from becoming weak."
+$mainhero
+"Umm. I already knew that."
+$Gramps
+"Uh huh. Of course you did. On to the next lesson."
+$mainhero
+"If that could be called a lesson."
+$Gramps
+"What did you say?"
+$mainhero
+...
+"Nothing"
+$Gramps
+"Uh huh.  As I was saying on to the next lesson.
+We need to head outside for this one."
+#tut2afterjoine
+#tut3s
+$Gramps
+"This thing over here is a power generating solar panel.  It refills 
+your mech's small internal battery so that they can work right.
+Without power your mech would be unable to attack."
+"Different attacks use different amounts of power, and
+you cannot regenerate power after an attack, even if you
+are near enough to a generator."
+"Fortunately, you don't have to worry about power as much inside, 
+as the building acts as a generator."
+$Narrator
+Suddenly a rustling noise in the nearby bushes startles the gang.
+#tut3e
+#guardtlk1
+$Guard 
+*gasp* "Eh?"
+$Guard
+"You're building your own mechs!  Thats against the law. 
+I'm going to have to arrest you for that."
+#guardtlk1e
+#shoots Gramps
+#guardtlk2
+$mainhero
+"You call that arresting? That looked more like...
+M U R D E R!"
+$Guard
+"Oops. My mistake. HAHAHAHAAHAHA!"
+$Gramps
+"*Cough* You have to avenge my death. *Cough*"
+$mainhero
+"And why would I want to do that, old man?"
+$Gramps
+"After all I taught you!  You don't deserve it, but for the good
+of the community I shall impart one last lesson.  You must kill him
+or he'll alert the city Guards and everything will be lost."
+"Move into range and select an attack. 
+Mechs have a close range sword as well as long range missiles and guns.
+Attack him with whatever you please. "
+"Just kill him for me. *Cough* I don't think I'm going to make it much longer." 
+*cough* *hack* *Weez*
+#guardtlk2e
+#Guard shoots Gramps again.
+#guardtlk3
+$Guard
+"Finally. He's dead. He was starting to get on my nerves."
+$mainhero
+"Tell me about it. I had to listen to it for five minutes."
+$Guard
+"I almost feel sorry for you.
+---Almost.
+Prepare to die........."
+$Guard
+".......I mean, be arrested."
+#guardtlk3e
+#tutorial level end
+#tut3ends
+$mainhero
+"Hmm, whats this. It looks like a map of the country. 
+It shows the Macroworks mech factory.
+I should get my team ready to head out."
+$Narrator
+Mission complete! 
+#tut3ende
+#chapter one begin
+$Narrator
+Chapter one
+The mech revolution
+$mainhero
+"Okay everyone. Be careful. I'm sure this place is being watched.
+We need to take out the Macroworks Guards
+without alerting all of them at the same time."
+"We might not have a large enough force to fight a mass battle.
+We need to make the enemy fight our way, rather than fighting
+theirs."
+$mech 1
+"Rodger that, Brian."
+$mainhero
+"Okay team. Move out!"
+#chapter one end
+#After you kill the last robot
+$villager
+"Oh thank you kind sirs. I thought we would never get rid of those mechs."
+$mainhero
+"No problem. I didn't exactly like seeing my own town
+being controlled like that myself."
+$villager
+"What are you going to do now that you've liberated Grandale?"
+$mainhero
+"I'm going to go take out the Macroworks 
+mech factory and stop this invasion."
+$villager
+"Really, you're really going to try?
+That's suicide, they have way more mechs then you do.
+You'll be slaughtered."
+$mainhero
+"Thanks for your concern. But I have to try.
+Someone has to take a stand against them."
+$villager
+"Well good luck to you on your mission.
+If this works you'll be a hero."
+$mainhero
+"I'm just doing what I have to.
+Farewell sir. I hope that things go well while I'm gone."
+$Narrtor
+Mission complete
+#intermission 1
+$Narrtor
+"And so Brian began his quest
+to destroy the Macroworks mech factory.
+The factory was built on the other side of a long range of mountains.
+The quickest way but not by far the easiest way 
+was to make a straight run across the mountains.
+Unbeknownst to our hero, Tukar, the head of Macroworks
+had sent out some scouting units
+to check on what had happened to the strike force in Grandale.
+#intermission 1 end
+#chapter two begin
+Chapter 2
+The Black mountain range
+$mech 1
+"Tell me again, why do we have to climb these mountains again?"
+$mainhero
+"Cause its the fastest way to the factory. 
+If we went around the mountains
+we would run out of power before we reached it."
+$mech 2
+"These battery's of yours don't last long enough.
+You should have taken the time to make them last longer.
+These mechs can't handle this terrain well."
+$mainhero
+"Well, we'll have to make due with what we got."
+#Evil units enter screen
+$scout unit one
+"Hey boss, are we there yet?"
+$Branden
+"No, were not there yet. When were out of the mountains then well be there."
+$scout unit one
+"Oh, now you tell me."
+$Branden
+"Why, oh why do I always get the dumb guys in my squad?
+I've been working with the Macroworks for a few years now.
+You would think they would bother to give me better men."
+$scout unit two
+"Hey boss, I think I see something over there across the river." 
+$Branden
+"Oh really, let me take a look."
+#Branden walks over to river
+$Branden
+"Hmm, those don't look like our mechs 
+and their colors aren't those of the Macroworks."
+$Scout unit one
+"Hey boss, their breaking a law by making their own mechs!"
+$Branden
+"I Know! I'm not dumb, unlike someone else I could mention.
+Anyway the penalty is death. Kill them all!"
+#chapter two end
+$Branden
+"How could I fail? They were just some rebels! Gah!"
+#Branden dies
+$mainhero
+"Well so much for those guys. 
+It looks like the Macroworks troops are on the move.
+Well have to be a little more careful
+cause we don't know how many of them there are at the factory
+or heading this way. Just keep your eyes open. Lets move out."
+Mission complete!
+#intermission 2 begin
+$narrtor
+"After defeating the scout unit in the mountains,
+Brian's units resumed their trek through the mountains.
+As they began to descend down the other side they encountered some trouble
+in the form of the factory's border guards."
+#intermission 2 end
+#chapter three begin
+Chapter 3
+Clearing the way
+$mainhero
+"Okay team, Were almost there, be careful.
+We don't know how many they have."
+$mech 1
+"I'm beginning to think this wasn't such a good idea.
+For all we know they could just keep making
+more mechs as we try to break in. We'd never get in if they did that."
+$mainhero
+"Keep yourself together. We all knew the risk when we took this mission.
+We just have to try our best
+and hope they don't have that many mechs at the factory."
+$mech 1
+"Yeah, I guess your right. Sorry about doubting you Brian."
+$mainhero
+"No problem, we all have some doubts sometimes."
+#Guards up in the hills see the good guys down in the valley.
+"Guard
+"Hey, it looks like we got company."
+$Guard 2
+"It looks like the the mech revolution that have been causing us a bunch of trouble.
+If we killed them we could get a promotion
+and we'd never have to do guard duty again."
+$Guard
+"I like your thinking. Lets squash them!"
+#chapter three end
+$mech 1
+"Alright thats the last of them. Where did they all come from?"
+$mainhero
+"They must have been watching us from up in the hills.
+We should probably keep a better eye out for more hidden troops."
+$mech 1
+"Good idea Brian. We don't want any more surprises."
+$mainhero
+"Were almost to the factory, lets go."
+Mission complete!
+#intermission 3 begin
+$Narrator
+"After defeating the border Guards, Brian and his the mech revolution
+continued their journey once again.
+After a short hike they were finally out of the mountains
+and back down on to the plains. 
+After another day or two of walking they finally reached
+the Macroworks mech factory.
+But Tukar was expecting them 
+and sent out some guards to 'greet' them at the gate." 
+#chapter four begin
+Chapter four
+Breaking and Entering
+$Guard
+"Lord Tukar, those intruders you were just warning us about are here."
+$tukar
+"Really? I didn't expect them to get here so fast.
+You better not let them inside or your dead."
+$Guard
+"Umm.....yes....sir."
+$tukar
+"We need to show them what happens 
+if they rebel against the Macroworks.
+Send out all the mechs and footmen we can spare to wipe them out."
+$Guard
+"Yes sir. I'll try my best. Troops lets move out."
+#scene shifts to the mech revolution
+$mainhero
+"Alright guys, there it is. The Macroworks mech factory.
+I'm sure they have some kind of defense."
+$mech 1
+"And here they come."
+$mainhero
+"Alright team this is it. Lets do this thing." 
+#chapter four end
+$Guard
+"Lord Tukar they took out our defense's. They're on their way inside.
+What should we do? Nothing seems to stop these guys."
+$tukar
+"When they enter the factory, have as many troops as we have left ready
+at the door, and then lure them to my chambers where I'll kill them myself."
+$Guard  
+"Yes sir, They won't be alive much longer."
+$tukar
+"I hope for your sake your right."
+Mission complete!
+#intermission four begin
+$Narrator
+"After cleaning up the Macroworks defense's
+Brian and his strike force were ready to enter the factory.
+This last battle that was in front of them was sure
+to be their hardest fight yet. The stakes were high.
+If they won the factory would be destroyed and the enemy scattered
+and weakened quite a bit. If they lost however,
+the people of Hermanaia would go into slavery for the rest of their lives.
+It all came down to who had control of the Macroworks mech factory.
+#intermission four end
+#chapter five begin
+Chapter five
+The last fight
+$mech 1
+"So this is the mech factory. Its bigger inside then I thought it would be."
+$mainhero
+"Looks can often be deceiving. Anyway we're almost to the core of the factory.
+All we need to do is set some explosives to go off after were safely away
+and then blow this place to oblivion."
+$mech 1
+"Alrighty then. Lets get to work."
+#When you reach core room
+$tukar
+"Hello Brian. What do you think your doing? This is private property
+and your trespassing. Plus you've killed lots of our mechs and men.
+And to top it off you even went as far as making your own mechs.
+Of course the penalty is death, but I almost wish
+there was something worse then death so that I could give it to you."
+$mainhero
+"You've caused a lot of people sorrow and misery.
+You're the one who deserves to die. I was only acting to save my people."
+$tukar
+"Sure you are. You 'good guys' are all the same.
+You think your some kind of hero but you still killed just as many people
+as we did. Your just as much a monster as I am"
+$mainhero
+"Even if I am I'm still going to undo what you did.
+I'm going to destroy your factory so no one has to worry about your
+mechs anymore."
+$tukar
+"Well you seem persistent. Lets just get this over with shall we?"
+$mainhero
+"After you."
+$tukar
+"Well then, prepare to die scum!"
+#chapter five end
+$tukar
+"NOOOOOO!!! I worked so hard on these mechs.
+I can't lose to some punk like you."
+$mainhero
+"Why are you smiling? you just lost."
+$tukar
+"Not quite. Not if I blow this place up while your still inside.
+I mean after all your just going to blow it up anyway.
+gggggooooddddbbbyyyeeeee."
+#main bad guy presses the self-destruct button as he dies
+$Computer
+"Self-destruct in two minutes."
+$mainhero
+"Everybody move! Lets get out of here!"
+#finale
+#Mech factory blows up just as mainhero and his strike team make it out
+$mech 1
+"Wow, that was close. I thought we were goner's for sure."
+$mainhero
+"Yep, but we got the job done. The Macroworks won't have
+such a strong hold in this area anymore. Sure they still have mechs
+other places around the country but they can't make anymore new ones."
+$mech 1
+"Maybe the people will get a little braver now that they see that
+the Macroworks isn't invincible after all."
+$mainhero
+"I'm sure they will. We did good team. Lets head home."
+Mission Complete!
+#end

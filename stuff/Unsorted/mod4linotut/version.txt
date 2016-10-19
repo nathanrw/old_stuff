@@ -1,0 +1,23 @@
+                             Version Modifications by FLOORWAX
+
+(
+Current version Mod4LINOTUT.zip
+
+ -changelog
+
+  Sept. 3, 2004
+      -Corrected as much grammer and spelling as well as punctuation as I could.
+      -Reworded a few things and edited stuff here and there, nothing too intrusive.
+      -Began re-arranging pages to better fit sections to start as close to the top
+       of every page possible. 
+  
+  Sept. 4, 2004
+      -finished re-arranging pages as best I could do to some images not wanting to move.
+      -remade table for section 1.2 since it would not move up a page.
+      -reorganized the index to fit into one page.
+      -created links to jump from index to various sections of the tutorial
+      -added links from topics in index as well.
+      -added links w/underlines at various points in certain sections to where it refers to 
+       previous material learned.
+
+)

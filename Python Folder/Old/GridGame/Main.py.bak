@@ -1,0 +1,58 @@
+#Import Modules
+import os, pygame
+from pygame.locals import *
+from math import sin, cos, tan, asin, acos, atan, sqrt
+
+#Import Game Files
+from LoadRes import *
+#Globals + Constants
+
+TILESIZE = 16
+SCREENRECT = (640,480)
+
+DISPLAY = pygame.Surface((SCREENRECT))
+
+allsprites = pygame.sprite.RenderUpdates()
+
+class Screen():
+    def __init__(self,SCREENRECT,title):
+        pygame.display.init()
+        self.display = pygame.display.set_mode(SCREENRECT)
+        pygame.display.set_caption(str(title))
+    def show(self,image):
+        pos = ((self.display.get_width()/2-image.get_width()/2),(self.display.get_height()/2-image.get_height()/2))
+        self.display.fill((0,0,0))
+        self.display.blit(image,(pos))
+    def drawsprites(groups, image):
+        for group in groups:
+            group.draw(image)
+        return image
+    def destroy():
+        pygame.display.quit()
+
+def CONTROLLING():
+    for event in pygame.event.get():
+        if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+            EXIT()
+    return 1
+            
+def EXIT():
+    pygame.quit()
+    running = 0
+    
+def UPDATESCREEN():
+    SCREEN.show()
+    SCREEN.drawsprites(allsprites)
+    
+def main():
+    pygame.init()
+    screen = Screen(SCREENRECT,"Window")
+    running = 1
+    while running == 1:
+        if CONTROLLING() == 0:
+            QUIT()
+            return
+    return
+
+if __name__ == '__main__': main()
+    

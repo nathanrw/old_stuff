@@ -1,0 +1,242 @@
+_______________________________________________________________________________
+
+            __   _____ __   _  ____  __     ____  _    _ __    __
+           |  | |     |  \ | |/    \|  |   /  _ \| |  | |  \  /  |
+           |  | |/| |\|   \| |  /\  \  |  /  / \_\ |  | |   \/   |
+           |  | /|| | | \  \ | (  )  ) | /|  _| _| |  | | |\  /| |
+           |  |/ || |/| |\   |  \/  /  |/ |  \_/ /  \/  / | \/ | |
+           |_____|____|_| \__|\____/|_____|\____/ \____/|_|    |_|
+                       _______  _______    __________
+                      |       |/  _ \  \  /  /       |
+                      | /| |\ |  / \_\  \/  /| /| |\ |
+                      |/ | | \|  _| _ )    ( |/ | | \|
+                         | |  \  \_/ /  /\  \   | |
+                         |_|   \____/__/  \__\  |_|
+                    ____  ____  _____ _______  ____  ____
+                   /  _ \|  _ \|     |       |/    \| __ \
+                  /  / \_\ | \ \/| |\| /| |\ |  /\  \ |_) )
+                 (   _| _| |  ) )| | |/ | | \| (  )  )   /
+                  \  \_/ / |_/ /\| |/|  | |  \  \/  / |\ \
+                   \____/|____/|_____|  |_|   \____/|_| \_\
+
+_______________________________________________________________________________
+Text Editor version: 0.10.0
+copyright (c)2002, 2003 by Peterpaul Klein Haneveld
+e-mail:         pp_kl_h@hotmail.com
+website:        www.kleinhaneveld.tk
+_______________________________________________________________________________
+Version information:
+_______________________________________________________________________________
+Version: 0.10.0 (01/12/03)
+        - I've silently gone back to versioning before the 1.0 release.
+        - Further improvements of the color selection screen.
+        - Removed linoleum compile option.
+        - Enlarged the maximum dimensions of the window to 1024 * 768.
+        - The editor is now skinnable with IGS-skins, and loads the preferred
+          skin at startup.
+        - The scrollers are now managed by iGUI scroller routines. These
+          replaced my own routines. Now clicking under a scroller also moves
+          the scroller.
+        NOTE: When using the scrollers while selecting text with the mouse
+                it reacts a little different. But i wanted this option to in
+                the editor.
+        - Speeded up normal text editing, by not refreshing the display after
+          each input, but only the lines which contain the changes. This should
+          result in a significant speed improvement, especially on slower
+          machines.
+_______________________________________________________________________________
+Version: 0.9.2 (16/07/03)
+        - Speeded up the display functions for displaying selections.
+        - Removed the restriction of the dos-syntax being needed for linoleum-
+          compile. Now every filename will automatically be converted to dos-
+          syntax.
+        - Some improvements: The cursor is now forced to be visible after user
+          input, which gives a more responsive feeling.
+        - Improved some of the routines for working with byte strings. The
+          improvements are based on the conversion routines Alex wrote for the
+          node and console example. The improvements make editing text a little
+          faster, as well as retracing the text display.
+        - Bugfix in the cursor, sometimes the cursor didn't blink, when placing
+          the cursor on a position. It was marked as a selection of zero
+          characters, causing some undesired sideeffects.
+        - Layout of the color selection screen changed. There's now as maximum
+          space available for the color selection region, which means that the
+          desired color can be specified more accurate.
+_______________________________________________________________________________
+Version: 0.9.1 (29/06/03)
+        - Finished Replace functionality.
+        - Bugfix in the color selection screen. The colors are now consistent.
+        - Added new option in the file menu: Linoleum Compile. This option only
+          works in the following cases:
+                * You have downloaded and installed the linoleum environment
+                  in the directory: C:\Linoleum
+                * The file edited is opened by the complete path.
+                  (either passed through the commandline, by drag'n drop, or
+                  you entered the complete path in the file-open menu.)
+                * The file is passed in DOS-syntax.
+                  (e.g. C:\mydocu~1\myproj~1\test.txt instead of
+                  C:\my documents\my projects\test.txt)
+          In the future i probably will remove the restriction of the DOS-
+          syntax.
+        - Improvements of the aqua theme.
+_______________________________________________________________________________
+Version: 0.9.0 (10/04/03)
+        - Added linenumber and characternumber information.
+        - Added information about the heapspace in Menu-Program-Heapspace.
+        - Implemented undo/redo functions. Accessible via Menu-Edit, and
+          through c-Z and c-Y.
+        - Improved pgup and pgdn routines, they now work like in most editors.
+        - Rewrite of large parts of the routines for loading files, this really
+          improves the speed for loading and merging files, and for copy and
+          paste functions. Merging pitagora.txt (the largest linoleum library
+          at the moment) into another large file now only takes a fraction of
+          a second on my AMD 1800+.
+_______________________________________________________________________________
+Version: 0.8.1
+        - Use of new DynaHeap library, which combines the powers of the resize
+          and the lock libraries. This library makes the lock-library more
+          stable.
+        - Added more shortkeys, and noted them in the menu.
+        - Bugfix in the tab routine: when text was selected, tabs weren't
+          handled right if the first selected chr was the last chr of the
+          selection.
+        - Bugfix in the basic matrix insert routine: when the alinea covered
+          more than one line in the matrix, inserting cleared the current line.
+        - Bugfix in the scrollbar routines: now the end of the file is seen
+          when the scrollbar is at the lowest position.
+        - Bugfix in the backspace routines: when text is selected, the selection
+          is deleted. This is what you expect to happen, but it didn't.
+_______________________________________________________________________________
+Version: 0.8.0
+The changes in this version justify another minor update. The lock-library is
+used for buffers, through a new bmemobj format for handling byte-based memory
+objects. All the file-routines are updated, and most of them completely
+rewritten. And there's more...
+        - Cut & Copy functions implemented, can be accessed from Menu-Edit.
+          These routines use the file CopyBffr.txt to store the selected text,
+          this way it's possible to let the text-editor interact with other
+          applications. Maybe later you'll be able to select the file yourself
+          in an options dialog.
+        - Paste function implemented. The contents from CopyBffr.txt will be
+          inserted at the position of the cursor.
+        - The shift key can be used to select text.
+        - Ctrl-c, Ctrl-v, Ctrl-x for copy, paste and cut.
+        - New routine to load files, with this routine you can also insert a
+          new file into the matrix, this is to enable the merging of files.
+          In former versions, all chars in the file were checked if they were
+          true-ascii. Now this check isn't performed. TABs are translated to
+          spaces after loading the file.
+        - Merge file option in menu added.
+        - As inputfiles the following file-formats are allowed:
+          * UNIX: linefeed as newline character
+          * WINDOWS: carriage return followed by linefeed as newline character
+          * DOS?: carriage return as newline character
+          But, for this moment only the windows format is supported for output.
+        - The editor colors are also used in the color selection screen, to
+          integrate things more.
+        - version.txt (this file) can be opened from the about dialog.
+        - All files passed through the command-line will be opened.
+        - lock-library used for filebuffer.
+        - bugfix: the editor now effectively checks if there is permission to
+          write a file.
+        - removed arrows from editor, they didn't really add something to the
+          editor.
+_______________________________________________________________________________
+Version: 0.7.1
+        - bugfix: the color selection screen had some glitches.
+        - find function has more functionality, find from top, from cursor or
+          find next result.
+        - added normal sized font.
+_______________________________________________________________________________
+Version: 0.7.0
+This version is totally rewritten and has a better design. There can be some
+optimizations, like not having to retrace the whole display for every operation
+on the matrix (see the first remark of Version 0.6). It offers almost the same
+functionality as version 0.6.3, only differences will be mentioned.
+        - Cursor is better designed, especially displaying selections.
+        - The font has additional settings, line and character spacings and the
+          tab-size can be specified.
+        - Find functionality (only from the top).
+        - No linodoc.
+        - Using the scrollbars when selecting text and the arrows at the side
+          of the text-edit area.
+_______________________________________________________________________________
+Version: 0.6.3
+        - Bugfix: when a delete or backspace was performed on the last character
+          of the file, the program terminated.
+_______________________________________________________________________________
+Version: 0.6.2
+        - Bugfix: A new opened file didn't open when the old file was saved.
+        - Bugfix: The program terminated when deleting a piece of text at the
+          end of a file.
+        - The cursor is also shown when the scrollbars are moved.
+        - Linodoc: the first linoleum option, inspired by Javadoc. This feature
+          will copy the (linoleum) documentation or remarks in the text to a
+          file. Effectively this means it takes the content which is between
+          brackets, '(' and ')'.
+        - Bugfix: Sometimes when deleting a selection of chrs, the text was
+          cleared, but the remaining lines weren't shifted up. This happened
+          when the end of the selection was after the end of the alinea.
+_______________________________________________________________________________
+Version: 0.6.1
+        - Bugfix: typing characters at the end of a line with the insert
+          function on, caused garbage characters (from the next line) at the end
+          of the cursor, solved.
+_______________________________________________________________________________
+Version: 0.6
+        - MatrixInsert & MatrixDelete return the lines which are changed, in
+          order to update the text display faster
+        - Delete & Backspace work with selection of chrs
+        - Select chrs in text
+        - Changed color selection screens to Gimp-like screen
+        - From the about dialog, you can directly open my website with your
+          standard browser.
+        - Changed scrollbar routines, when you click a scrollbar, the mouse is
+          only used by the scrollbar, so even if the mouse leaves the scrollbar
+          region, the scrollbar will be adjusted.
+        - Bugfix in control loop, program sometimes terminated while resizing or
+          while the font changed, solved.
+        - Bugfix in insert function, the function didn't add a line when the
+          cursor was behind the last chr on a line, solved.
+_______________________________________________________________________________
+Version: 0.5
+        - Added two basic matrix functions: Insert & Delete, all operations on
+          the text-matrix are done by these two functions. This makes it easy
+          to keep a journal, for undo functionality.
+        - Changed version number to two digits
+        - Added a medium sized font
+        - Set cursor on position with mouse
+        - Changed cursor size in normal state
+        - Fixed a little glitch in the enter function
+        - Changed matrix basic functions in order to work with matrices of
+          different lengths
+        - Changed FileBuffer (a matrix) size from 16 MB to 4 MB, which should
+          be large enough for holding files with less than 65536 lines.
+          (which is the constraint for this editor)
+
+        - size: 24.73 Mb (when running)
+_______________________________________________________________________________
+Version: 0.0.4
+        - Added support for different fonts
+        - Added Insert and Cursor state boxes
+        - Added horizontal scrollbar
+        - Finished mouse support for scrollbars
+        - Added changing editor colors
+        - Finished Delete/TAB function
+_______________________________________________________________________________
+Version: 0.0.3
+        - Added 3d border around text area
+        - Type text with insert function
+        - Finished Enter function
+        - Finished Backspace function
+        - Optimized count routine (increases speed with a lot of basic actions)
+        - Added vertical scrollbar (no mouse support)
+_______________________________________________________________________________
+Version: 0.0.2
+        - included open/save function
+        - cursor keys
+        - home/end keys
+_______________________________________________________________________________
+Version: 0.0.1 (First release)
+        - edit text (without insert function)
+        - TAB/Enter/Backspace

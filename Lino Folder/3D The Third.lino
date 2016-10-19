@@ -1,0 +1,165 @@
+( 3D The Third )
+
+"directors"
+	unit = 32;
+    display width = 400;  ( For isokernel )
+    display height = 300; ( For isokernel )
+	
+"constants"
+	PI = 3.141592f; ( Pi. )
+	PI BY 180 = PI div 180f; ( For converting to radians. )
+	
+"variables"
+	CAMERA WIDTH = 400;  ( Width of the view plane. )
+	CAMERA HEIGHT = 300; ( Height of the view plane. )
+	CAMERA DIST = 200f;  ( Distance from view to plane. )
+	
+    matrix vertices = 0f *** 2997; ( All vertices go in here. Vertices are pointed at by polygons. )
+	matrix polygons = 0 *** 999;   ( All polygons go in here. All polygons must be triangular, each block )
+								   ( of each triangle points to a vertex in vertices.                     )
+	
+	vector camera position = 0; 0; 0; ( Location of the viewpoint in 3 space. )
+	vector camera angle    = 0; 0; 0; ( Direction of the camera in 3D space. )
+	
+"workspace"
+    screen = 400 multiplied 300;
+	
+"programme"
+    -> init;
+	( Subroutines )
+	
+	"radians"
+		( FLOAT A                        )
+		( A = angle in degrees.          )
+		( Converts degrees into radians. )
+		
+		A ** PI BY 180;
+		
+		leave;
+	
+    "project point"
+		( FLOATS A[x,y,z] )
+		( A = point in 3 Space )
+		( Projects a 3D point onto a 2D plane )
+		
+		B = [CAMERA DIST]; ( Distance from viewpoint to plane )
+		C = [A plus 2];    ( Distance from point to plane )
+		C ++ 0.0001f;      ( Eliminate divide by 0 )
+		B // C;			   ( Only 1 divide needs doing )
+		
+		C = [A];		     ( X in 3 Space )
+		C ** B;			     ( Multiply by previous value )
+		D ,= [CAMERA WIDTH]; ( Centre point on view plane )
+		D ** 0.5f;           ( So as to get the point in 2 space )
+		C -- D;			     ( Apply this. )
+		
+		[A] = C; ( Move it into the address A is pointing at. )
+		
+		C = [A plus 1];       ( Y in 3 Space )
+		C ** B;               ( Multiply by previous value )
+		D ,= [CAMERA HEIGHT]; ( Centre point on view plane )
+		D ** 0.5f;            ( So as to get the point in 2 space )
+		C -- D;               ( Apply this. )
+		
+		[A plus 1] = C; ( Move it into the address A+1 is pointing at. )
+		
+		leave;
+	
+    "rotate"
+		( FLOATS A[x,y], FLOAT B 			)
+		( A = 2D point           			)
+		( B = Angle in radians   			)
+		( Rotates a 2D point about <0,0>    )
+		
+		C = B;  ( Copy the angle )
+		~B;     ( Sinval )
+		~~C;    ( Cosval )
+		
+		D = [A];        ( Copy X value to D )
+		D ** C;         ( Get Cosval * X )
+		E = [A plus 1]; ( Copy Y value to E )
+		E ** B;         ( Get Sinval * Y )
+		D -- E;         ( Get the new X value )
+		D -->;	        ( Make room with the stack )
+		
+		D = [A plus 1]; ( Copy Y value to D )
+		D ** C;	        ( Get Cosval * Y )
+		E = [A];        ( Copy X value to E )
+		E ** B;	        ( Get Sinval * X )
+		E ++ D;         ( Get the new Y value )
+		
+		<-- D;          ( Get the new X value back )
+		[A] = D;        ( Move the new X value )
+		[A plus 1] = E; ( Move the new Y value )
+		
+		leave;
+	
+	"rotate 3D"
+		( FLOATS A[x,y,z] B[x,y,z]                         )
+		( A = 3D Point                                     )
+		( B 3D Angle                                       )
+		( Rotates a point in 3D space about <0,0,0> by the )
+		( angle provided.                                  )
+		
+		C = [A];                 ( Get A in the form <y,z> and )
+		[A] = [A plus 1];        ( Keep x safe.                )
+		[A plus 1] = [A plus 2];
+		
+		D = B;   (Put B in D.     )
+		B = [D]; ( Angle about x. )
+		
+		=> rotate; ( Returns <y,z> )
+		
+		C <> [A]; ( Swap x and y. )
+		B = [D plus 1]; ( Angle about y. )
+		
+		=> rotate; ( Returns <x,z> )
+		
+		C <> [A plus 1]; ( Swap z and y.  )
+		B = [D plus 2];  ( Angle about z. )
+		
+		=> rotate; ( Returns <x,y> )
+		
+		[A plus 2] = C; ( A 3D coordinate once more! )
+		
+		leave;
+	
+	"rotate point about camera"
+		( Takes A, B and C as input. A = point, B = viewpoint. )
+		( C = camera rotation. Returns A. The rest are killed, )
+		( I would imagine. 									   )
+		
+		[A] - [B];               ( Make the viewpoint the origin    )
+		[A plus 1] - [B plus 1]; ( by subtracting it from the point )
+		[A plus 2] - [B plus 2]; ( to be rotated                    )
+		
+		B = C;        ( Load the camera angle into B.    )
+		=> rotate 3D; ( Returns <x,y,z> pointed at by A. )
+		
+		leave;
+		
+    "show"
+		( Refresh the display. )
+		
+		[Display Command] = RETRACE;
+        isocall;
+		
+		leave;
+	
+	"init"
+		( Set everything up then run the main loop. )
+		
+		[Display Origin] = screen;
+		-> main;
+		
+	"main"
+		( Loop 'till judgement day. )
+		
+		-> finish;
+		=> show;
+		-> main;
+		
+    "finish"
+		( End the program. )
+		
+        end;
