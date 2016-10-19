@@ -46,8 +46,8 @@ def MiniMap(position, size, items, reference, surface, font, text="MiniMap"):
 	def PositionOnMap(item):
 		relative_position = Sub2DVector(item.pos,reference)
 		if -scale*0.5 < relative_position[0] < scale*0.5 and -scale*0.5 < relative_position[1] < scale*0.5 :
-			map_x = relative_position[0] / scale * (size[0]-16) + size[0]/2 + position[0] + 0
-			map_y = relative_position[1] / scale * (size[1]-38) + size[1]/2 + position[1] + 15
+			map_x = int(relative_position[0] / scale * (size[0]-16) + size[0]/2 + position[0] + 0)
+			map_y = int(relative_position[1] / scale * (size[1]-38) + size[1]/2 + position[1] + 15)
 			pygame.draw.circle(surface, colour, (map_x,map_y), 2)
 	
 	for x, group in enumerate(items):

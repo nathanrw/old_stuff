@@ -36,7 +36,7 @@ class StandardEmitter():
 		
 		particles = []
 		n = 3
-		for x in range(0, self.volume):
+		for x in range(0, int(self.volume)):
 			
 			self.particles.append(Particle(self.position, ScalMul2DVector \
 			(Add2DVector(self.direction,[rnd(),rnd()]),n), [0,0], \
@@ -61,7 +61,7 @@ class AffixedEmitter(StandardEmitter):
 		particles = []
 		n = 3
 		
-		for x in range(0, self.volume):
+		for x in range(0, int(self.volume)):
 			vel = ScalMul2DVector(Add2DVector(self.direction,\
 			[rnd()/4,rnd()/4]),n)
 			
@@ -106,7 +106,7 @@ class AffixedCircularEmitter():
 		self.volume = volume
 		self.fxlist = fx
 	def emit(self):
-		for x in range(0, self.volume):
+		for x in range(0, int(self.volume)):
 			pass
 
 #==============================================================================
