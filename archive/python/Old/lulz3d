@@ -1,6 +1,0 @@
-class camera():
-    def __init__(self):
-        self.position = (0,0,0)
-        self.rotation = (0,0,0)
-        self.field_of_view = (0,0,0)
-        self.dist_to_screen = 50
