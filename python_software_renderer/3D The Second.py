@@ -34,6 +34,11 @@ try:
 except: 
     print "Failed to import Psyco"
 
+# This is necessary when passing in tuples to pygame since whereas previously
+# it looks like floats were acceptable input, they now aren't.
+def itup(ftup):
+    return (int(ftup[0]), int(ftup[1]))
+
 #=============================================
 #Main Function
 #=============================================
@@ -197,13 +202,13 @@ def main():
         #Display settings for normal fullscreen
         #=============================================
         if ISFULLSCREEN:
-            screen = pygame.display.set_mode(WINDOWSIZE, DOUBLEBUF | HWSURFACE | FULLSCREEN)
+            screen = pygame.display.set_mode(itup(WINDOWSIZE), DOUBLEBUF | HWSURFACE | FULLSCREEN)
 
         #=============================================
         #Display settings for normal windowed
         #=============================================
         else:
-            screen = pygame.display.set_mode(WINDOWSIZE, DOUBLEBUF)
+            screen = pygame.display.set_mode(itup(WINDOWSIZE), DOUBLEBUF)
             
     elif TINYWINDOW:
 
@@ -212,14 +217,14 @@ def main():
         #=============================================
         if ISFULLSCREEN:
             NEWWINDOWSIZE = (WINDOWSIZE[0]*FACTOR,WINDOWSIZE[1]*FACTOR)
-            screen = pygame.display.set_mode(NEWWINDOWSIZE, DOUBLEBUF | HWSURFACE | FULLSCREEN)
+            screen = pygame.display.set_mode(itup(NEWWINDOWSIZE), DOUBLEBUF | HWSURFACE | FULLSCREEN)
 
         #=============================================
         #Display settings for blown up windowed.
         #=============================================
         else:
             NEWWINDOWSIZE = (WINDOWSIZE[0]*FACTOR,WINDOWSIZE[1]*FACTOR)
-            screen = pygame.display.set_mode(NEWWINDOWSIZE, DOUBLEBUF)
+            screen = pygame.display.set_mode(itup(NEWWINDOWSIZE), DOUBLEBUF)
 
     #=============================================
     #Set display caption
@@ -369,7 +374,7 @@ def main():
             #=============================================
             #Blow up the surface to fit the screen.
             #=============================================
-            screen.blit(pygame.transform.scale(SURFACE_ONE,NEWWINDOWSIZE),(0,0))
+            screen.blit(pygame.transform.scale(SURFACE_ONE,itup(NEWWINDOWSIZE)),(0,0))
             
         #=============================================
         #Statistics and instructions
